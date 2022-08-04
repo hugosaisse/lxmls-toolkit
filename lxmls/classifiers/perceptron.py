@@ -19,6 +19,7 @@ class Perceptron(lc.LinearClassifier):
         x = self.add_intercept_term(x)
         nr_x, nr_f = x.shape
         nr_c = np.unique(y).shape[0]
+        #int_w = []
         w = np.zeros((nr_f, nr_c))
         for epoch_nr in range(self.nr_epochs):
 
@@ -47,6 +48,8 @@ class Perceptron(lc.LinearClassifier):
             acc = self.evaluate(y, y_pred)
             self.trained = False
             print("Rounds: %i Accuracy: %f" % (epoch_nr, acc))
+            #if epoch_nr % 2 == 0:
+            #    print(f'Weights: {self.params_per_round[epoch_nr]}')
         self.trained = True
 
         if self.averaged:
